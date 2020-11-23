@@ -1,5 +1,6 @@
 import random
 import typing as tp
+from math import sqrt
 
 
 def is_prime(n: int) -> bool:
@@ -12,13 +13,12 @@ def is_prime(n: int) -> bool:
     >>> is_prime(8)
     False
     """
-    if n > 1 or n < -1:
-        for i in range(2, round(n*(1/2))):
+    if n != 1:
+        for i in range(2, round(sqrt(n)) + 1):
             if n % i == 0:
                 return False
         return True
-    else:
-        return False
+    return False
 
 
 def gcd(a: int, b: int) -> int:
@@ -29,9 +29,12 @@ def gcd(a: int, b: int) -> int:
     >>> gcd(3, 7)
     1
     """
-    while a % b != 0:
-        a, b = b, a % b
-    return b
+    if b != 0:
+        while a % b != 0:
+            a, b = b, a % b
+        return b
+    else:
+        return a
 
 
 def multiplicative_inverse(e: int, phi: int) -> int:
@@ -93,17 +96,18 @@ def decrypt(pk: tp.Tuple[int, int], ciphertext: tp.List[int]) -> str:
     return "".join(plain)
 
 
-if name == "__main__":
-    print("RSA Encrypter/ Decrypter")
-    p = int(input("Enter a prime number (17, 19, 23, etc): "))
-    q = int(input("Enter another prime number (Not one you entered above): "))
-    print("Generating your public/private keypairs now . . .")
-    public, private = generate_keypair(p, q)
-    print("Your public key is ", public, " and your private key is ", private)
-    message = input("Enter a message to encrypt with your private key: ")
-    encrypted_msg = encrypt(private, message)
-    print("Your encrypted message is: ")
-    print("".join(map(lambda x: str(x), encrypted_msg)))
-    print("Decrypting message with public key ", public, " . . .")
-    print("Your message is:")
-    print(decrypt(public, encrypted_msg))
+# if __name__ == "__main__":
+#     print("RSA Encrypter/ Decrypter")
+#     p = int(input("Enter a prime number (17, 19, 23, etc): "))
+#     q = int(input("Enter another prime number (Not one you entered above): "))
+#     print("Generating your public/private keypairs now . . .")
+#     public, private = generate_keypair(p, q)
+#     print("Your public key is ", public, " and your private key is ", private)
+#     message = input("Enter a message to encrypt with your private key: ")
+#     encrypted_msg = encrypt(private, message)
+#     print("Your encrypted message is: ")
+#     print("".join(map(lambda x: str(x), encrypted_msg)))
+#     print("Decrypting message with public key ", public, " . . .")
+#     print("Your message is:")
+#     print(decrypt(public, encrypted_msg))
+print(is_prime(1))
