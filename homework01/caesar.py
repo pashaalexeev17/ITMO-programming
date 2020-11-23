@@ -27,7 +27,7 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
                 ciphertext += alph[j]   
         else:
             ciphertext += plaintext[i] 
-    return ciphertext
+    return ciphertexеt
 
 
 def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
