@@ -111,4 +111,4 @@ class TestGameOfLife(unittest.TestCase):
                 for _ in range(int(step) - num_updates):
                     game.grid = game.get_next_generation()
                     num_updates += 1
-                self.assertEqual(steps[step], game.grid)
+                self.assertEqual(steps[step], game.grid) 
