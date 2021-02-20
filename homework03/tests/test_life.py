@@ -138,3 +138,4 @@ class TestGameOfLife(unittest.TestCase):
         for _ in range(self.max_generations + 1):
             game.step()
         self.assertFalse(game.is_changing)
+ 
