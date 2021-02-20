@@ -112,3 +112,5 @@ class TestGameOfLife(unittest.TestCase):
                     game.grid = game.get_next_generation()
                     num_updates += 1
                 self.assertEqual(steps[step], game.grid) 
+
+                
